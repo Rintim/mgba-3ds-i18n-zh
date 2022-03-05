@@ -1,48 +1,49 @@
 mGBA
+
+>> 此仓库为3DS汉化版仓库
+
 ====
 
-mGBA is an emulator for running Game Boy Advance games. It aims to be faster and more accurate than many existing Game Boy Advance emulators, as well as adding features that other emulators lack. It also supports Game Boy and Game Boy Color games.
+mGBA 是一个运行 Game Boy Advance 游戏的模拟器。mGBA 的目标是比众多现有的 Game Boy Advance 模拟器更快、更准确，并增加其他模拟器所缺少的功能。mGBA 还支持 Game Boy 和 Game Boy Color 游戏。
 
-Up-to-date news and downloads can be found at [mgba.io](https://mgba.io/).
+可在以下网址找到最新新闻和下载：[mgba.io](https://mgba.io/)。
 
-[![Build status](https://buildbot.mgba.io/badges/build-win32.svg)](https://buildbot.mgba.io)
-[![Translation status](https://hosted.weblate.org/widgets/mgba/-/svg-badge.svg)](https://hosted.weblate.org/engage/mgba)
+[![Build status](https://travis-ci.org/mgba-emu/mgba.svg?branch=master)](https://travis-ci.org/mgba-emu/mgba)
 
-Features
+功能
 --------
 
-- Highly accurate Game Boy Advance hardware support[<sup>[1]</sup>](#missing).
-- Game Boy/Game Boy Color hardware support.
-- Fast emulation. Known to run at full speed even on low end hardware, such as netbooks.
-- Qt and SDL ports for a heavy-weight and a light-weight frontend.
-- Local (same computer) link cable support.
-- Save type detection, even for flash memory size[<sup>[2]</sup>](#flashdetect).
-- Support for cartridges with motion sensors and rumble (only usable with game controllers).
-- Real-time clock support, even without configuration.
-- Solar sensor support for Boktai games.
-- Game Boy Camera and Game Boy Printer support.
-- A built-in BIOS implementation, and ability to load external BIOS files.
-- Turbo/fast-forward support by holding Tab.
-- Rewind by holding Backquote.
-- Frameskip, configurable up to 10.
-- Screenshot support.
-- Cheat code support.
-- 9 savestate slots. Savestates are also viewable as screenshots.
-- Video, GIF, WebP, and APNG recording.
-- e-Reader support.
-- Remappable controls for both keyboards and gamepads.
-- Loading from ZIP and 7z files.
-- IPS, UPS and BPS patch support.
-- Game debugging via a command-line interface and GDB remote support, compatible with Ghidra and IDA Pro.
-- Configurable emulation rewinding.
-- Support for loading and exporting GameShark and Action Replay snapshots.
-- Cores available for RetroArch/Libretro and OpenEmu.
-- Community-provided translations for several languages via [Weblate](https://hosted.weblate.org/engage/mgba).
-- Many, many smaller things.
+- 支持高精确的 Game Boy Advance 硬件[<sup>[1]</sup>](#missing)。
+- 支持 Game Boy/Game Boy Color 硬件。
+- 快速模拟：已知即使在低端硬件（例如上网本）上也能够全速运行。
+- 用于重型和轻型前端的 Qt 和 SDL 端口。
+- 支持本地（同一台计算机）链接电缆。
+- 存档类型检测，即使是闪存大小也可检测[<sup>[2]</sup>](#flashdetect)。
+- 支持附带有运动传感器和振动机制的卡带（仅适用于游戏控制器）。
+- 支持实时时钟（RTC），甚至无需配置。
+- 支持《我们的太阳》系列游戏的太阳能传感器。
+- 支持 Game Boy 相机和 Game Boy 打印机。
+- 内置 BIOS 执行，并具有加载外部 BIOS 文件的功能。
+- 支持 Turbo/快进功能（按住 Tab 键）。
+- 支持倒带（按住反引号键）。
+- 支持跳帧，最多可配置 10 级。
+- 支持截图。
+- 支持作弊码。
+- 支持 9 个即时存档插槽。还能够以屏幕截图的形式查看即时存档。
+- 支持视频、GIF、WebP 和 APNG 录制。
+- 支持 e-Reader。
+- 可重新映射键盘和游戏手柄的控制键。
+- 支持从 ZIP 和 7z 文件中加载。
+- 支持 IPS、UPS 和 BPS 补丁。
+- 支持通过命令行界面和 GDB 远程支持进行游戏调试，兼容 IDA Pro。
+- 支持可配置的模拟倒带。
+- 支持载入和导出 GameShark 和 Action Replay 快照。
+- 适用于 RetroArch/Libretro 和 OpenEmu 的内核。
+- 许许多多的小玩意。
 
-#### Game Boy mappers
+#### Game Boy 映射器（mapper）
 
-The following mappers are fully supported:
+完美支持以下 mapper：
 
 - MBC1
 - MBC1M
@@ -50,38 +51,37 @@ The following mappers are fully supported:
 - MBC3
 - MBC3+RTC
 - MBC5
-- MBC5+Rumble
+- MBC5+振动
 - MBC7
-- Wisdom Tree (unlicensed)
-- NT "new type" (unlicensed MBC5-like)
-- Pokémon Jade/Diamond (unlicensed)
-- BBD (unlicensed MBC5-like)
-- Hitek (unlicensed MBC5-like)
+- Wisdom Tree（未授权）
+- Pokémon Jade/Diamond（未授权）
+- BBD（未授权、类 MBC5）
+- Hitek（未授权、类 MBC5）
 
-The following mappers are partially supported:
+部分支持以下 mapper：
 
-- MBC6 (missing flash memory write support)
+- MBC6（缺少闪存写入支持）
 - MMM01
 - Pocket Cam
-- TAMA5 (missing RTC support)
-- HuC-1 (missing IR support)
-- HuC-3 (missing IR support)
+- TAMA5（缺少 RTC 支持）
+- HuC-1（缺少 IR 支持）
+- HuC-3（缺少 IR 和 RTC 支持）
 
-### Planned features
+### 计划加入的功能
 
-- Networked multiplayer link cable support.
-- Dolphin/JOY bus link cable support.
-- MP2k audio mixing, for higher quality sound than hardware.
-- Re-recording support for tool-assist runs.
-- Lua support for scripting.
-- A comprehensive debug suite.
-- Wireless adapter support.
+- 支持联网多人链接电缆。
+- 支持 Dolphin/JOY 总线链接电缆。
+- MP2k 音频混合，获得比硬件更高质量的声音。
+- 支持针对工具辅助竞速（Tool-Assisted Speedrun）的重录功能。
+- 支持 Lua 脚本。
+- 全方位的调试套件。
+- 支持无线适配器。
 
-Supported Platforms
+支持平台
 -------------------
 
-- Windows 7 or newer
-- OS X 10.8 (Mountain Lion)[<sup>[3]</sup>](#osxver) or newer
+- Windows 7 或更新
+- OS X 10.8（山狮 / Mountain Lion）[<sup>[3]</sup>](#osxver) 或更新
 - Linux
 - FreeBSD
 - Nintendo 3DS
@@ -89,43 +89,43 @@ Supported Platforms
 - Wii
 - PlayStation Vita
 
-Other Unix-like platforms, such as OpenBSD, are known to work as well, but are untested and not fully supported.
+已知其他类 Unix 平台（如 OpenBSD）也可以使用，但未经测试且不完全受支持。
 
-### System requirements
+### 系统需求
 
-Requirements are minimal. Any computer that can run Windows Vista or newer should be able to handle emulation. Support for OpenGL 1.1 or newer is also required, with OpenGL 3.2 or newer for shaders and advanced features.
+系统需求很低。任何可以运行 Windows Vista 或更高版本的计算机都应该能够处理模拟机制，还需要支持 OpenGL 1.1 或更高版本。而对于着色器和高级功能，则需要支持 OpenGL 3.2 或更高版本。
 
-Downloads
+下载
 ---------
 
-Downloads can be found on the official website, in the [Downloads][downloads] section. The source code can be found on [GitHub][source].
+可在官方网站的[下载（Downloads）][downloads]区域找到下载地址。可在 [GitHub][source] 找到源代码。
 
-Controls
+控制键位
 --------
 
-Controls are configurable in the settings menu. Many game controllers should be automatically mapped by default. The default keyboard controls are as follows:
+可在设置菜单中进行控制键位的配置。许多游戏控制器应该会在默认情况下自动映射。键盘的默认控制键位如下：
 
-- **A**: X
-- **B**: Z
-- **L**: A
-- **R**: S
-- **Start**: Enter
-- **Select**: Backspace
+- **A**：X
+- **B**：Z
+- **L**：A
+- **R**：S
+- **Start**：回车键
+- **Select**：退格键
 
-Compiling
+编译
 ---------
 
-Compiling requires using CMake 3.1 or newer. GCC and Clang are both known to work to compile mGBA, but Visual Studio 2013 and older are known not to work. Support for Visual Studio 2015 and newer is coming soon.
+编译需要使用 CMake 3.1 或更新版本。已知 GCC 和 Clang 都可以编译 mGBA，而 Visual Studio 2013 和更旧的版本则无法编译。我们即将实现对 Visual Studio 2015 或更新版本的支持。
 
-#### Docker building
+#### Docker 构建
 
-The recommended way to build for most platforms is to use Docker. Several Docker images are provided that contain the requisite toolchain and dependencies for building mGBA across several platforms.
+对于大多数平台来说，建议使用 Docker 进行构建。我们提供了多个 Docker 映像，其中包含在多个平台上构建 mGBA 所需的工具链和依赖项。
 
-To use a Docker image to build mGBA, simply run the following command while in the root of an mGBA checkout:
+要使用 Docker 映像构建 mGBA，只需在 mGBA 的签出（checkout）根目录中运行以下命令：
 
 	docker run --rm -t -v $PWD:/home/mgba/src mgba/windows:w32
 
-This will produce a `build-win32` directory with the build products. Replace `mgba/windows:w32` with another Docker image for other platforms, which will produce a corresponding other directory. The following Docker images available on Docker Hub:
+此命令将生成 `build-win32` 目录。将 `mgba/windows:w32` 替换为其他平台上的 Docker 映像，会生成相应的其他目录。Docker Hub 上提供了以下 Docker 映像：
 
 - mgba/3ds
 - mgba/switch
@@ -138,9 +138,9 @@ This will produce a `build-win32` directory with the build products. Replace `mg
 - mgba/windows:w32
 - mgba/windows:w64
 
-#### *nix building
+#### *nix 构建
 
-To use CMake to build on a Unix-based system, the recommended commands are as follows:
+要在基于 Unix 的系统上使用 CMake 进行构建，推荐执行以下命令：
 
 	mkdir build
 	cd build
@@ -148,9 +148,9 @@ To use CMake to build on a Unix-based system, the recommended commands are as fo
 	make
 	sudo make install
 
-This will build and install mGBA into `/usr/bin` and `/usr/lib`. Dependencies that are installed will be automatically detected, and features that are disabled if the dependencies are not found will be shown after running the `cmake` command after warnings about being unable to find them.
+这些命令将构建 mGBA 并将其安装到 `/usr/bin` 和 `/usr/lib` 中。系统会自动检测已安装的依赖项，如果未找到依赖项，则会在提示找不到依赖项的情况下运行 `cmake` 命令，并显示已被禁用的功能。
 
-If you are on macOS, the steps are a little different. Assuming you are using the homebrew package manager, the recommended commands to obtain the dependencies and build are:
+如果您使用的是 MacOS，则步骤略有不同。假设您使用的是自制软件包管理器，建议使用以下命令来获取依赖项并进行构建：
 
 	brew install cmake ffmpeg libzip qt5 sdl2 libedit pkg-config
 	mkdir build
@@ -158,100 +158,100 @@ If you are on macOS, the steps are a little different. Assuming you are using th
 	cmake -DCMAKE_PREFIX_PATH=`brew --prefix qt5` ..
 	make
 
-Note that you should not do a `make install` on macOS, as it will not work properly.
+请注意，您不能在 MacOS 上执行 `make install`，因为此命令不能正常工作。
 
-#### Windows developer building
+#### Windows 开发者构建
 
 ##### MSYS2
 
-To build on Windows for development, using MSYS2 is recommended. Follow the installation steps found on their [website](https://msys2.github.io). Make sure you're running the 32-bit version ("MSYS2 MinGW 32-bit") (or the 64-bit version "MSYS2 MinGW 64-bit" if you want to build for x86_64) and run this additional command (including the braces) to install the needed dependencies (please note that this involves downloading over 1100MiB of packages, so it will take a long time):
+如果要在 Windows 上进行构建，建议使用 MSYS2。请按照 MSYS2 [网站](https://msys2.github.io)上的安装步骤操作。请确保您运行的是 32 位版本的 MSYS2（“MSYS2 MinGW 32-bit”）。如果想要构建 x86_64 版本，则运行 64 位版本的 MSYS2（“MSYS2 MinGW 64-bit”） ，并执行以下额外命令（包括花括号）来安装所需的依赖项（请注意，此命令涉及下载超过 1100MiB 的包，因此会需要很长一段时间）：
 
 	pacman -Sy --needed base-devel git ${MINGW_PACKAGE_PREFIX}-{cmake,ffmpeg,gcc,gdb,libelf,libepoxy,libzip,pkgconf,qt5,SDL2,ntldd-git}
 
-Check out the source code by running this command:
+运行以下命令检查源代码：
 
 	git clone https://github.com/mgba-emu/mgba.git
 
-Then finally build it by running these commands:
+最后运行以下命令进行构建：
 
 	mkdir -p mgba/build
 	cd mgba/build
 	cmake .. -G "MSYS Makefiles"
 	make -j$(nproc --ignore=1)
 
-Please note that this build of mGBA for Windows is not suitable for distribution, due to the scattering of DLLs it needs to run, but is perfect for development. However, if distributing such a build is desired (e.g. for testing on machines that don't have the MSYS2 environment installed), running `cpack -G ZIP` will prepare a zip file with all of the necessary DLLs.
+请注意，此版本的 mGBA for Windows 不适合分发，因为运行此版本所需的 DLL 非常分散，但非常适合开发。但是，如果需要分发此类版本（例如用于在未安装 MSYS2 环境的计算机上进行测试），请运行 `cpack-G ZIP`，准备一个包含所有必要 DLL 的压缩文件。
 
 ##### Visual Studio
 
-To build using Visual Studio is a similarly complicated setup. To begin you will need to install [vcpkg](https://github.com/Microsoft/vcpkg). After installing vcpkg you will need to install several additional packages:
+使用 Visual Studio 进行构建需要同样复杂的设置。首先需要安装 [vcpkg](https://github.com/Microsoft/vcpkg)。安装 vcpkg 后，还需要安装数个额外的软件包：
 
     vcpkg install ffmpeg[vpx,x264] libepoxy libpng libzip sdl2 sqlite3
 
-Note that this installation won't support hardware accelerated video encoding on Nvidia hardware. If you care about this, you'll need to install CUDA beforehand, and then substitute `ffmpeg[vpx,x264,nvcodec]` into the previous command.
+请注意，此安装将不支持 Nvidia 硬件上的硬件加速视频编码。如果对此非常在意，则需要预先安装 CUDA，然后用 `ffmpeg[vpx,x264,nvcodec]` 替换前面命令中的 `ffmpeg[vpx,x264]`。
 
-You will also need to install Qt. Unfortunately due to Qt being owned and run by an ailing company as opposed to a reasonable organization there is no longer an offline open source edition installer for the latest version, so you'll need to either fall back to an [old version installer](https://download.qt.io/official_releases/qt/5.12/5.12.9/qt-opensource-windows-x86-5.12.9.exe) (which wants you to create an otherwise-useless account, but you can bypass temporarily setting an invalid proxy or otherwise disabling networking), use the online installer (which requires an account regardless), or use vcpkg to build it (slowly). None of these are great options. For the installer you'll want to install the applicable MSVC versions. Note that the offline installers do not support MSVC 2019. For vcpkg you'll want to install it as such, which will take quite a while, especially on quad core or less computers:
+您还需要安装 Qt。但不幸的是，由于 Qt 已被一家境况不佳的公司而不是合理的组织所拥有并运营，所以不再存在针对最新版本的离线开源版本安装程序，需要退回到[旧版本的安装程序](https://download.qt.io/official_releases/qt/5.12/5.12.9/qt-opensource-windows-x86-5.12.9.exe) （会要求创建一个原本已无用的帐号，但可以通过临时设置无效代理或以其他方式禁用网络来绕过这一机制。）、使用在线安装程序（无论如何都需要一个帐号），或使用 vcpkg 进行构建（速度很慢）。这些都不是很好的选择。需要针对安装程序安装适用的 MSVC 版本。请注意，离线安装程序不支持 MSVC 2019。若使用 vcpkg，您需要花费相当一段时间将其安装，尤其是在四核或更少内核的计算机上花费时间更久：
 
     vcpkg install qt5-base qt5-multimedia
 
-Next, open Visual Studio, select Clone Repository, and enter `https://github.com/mgba-emu/mgba.git`. When Visual Studio is done cloning, go to File > CMake and open the CMakeLists.txt file at the root of the checked out repository. From there, mGBA can be developed in Visual Studio similarly to other Visual Studio CMake projects.
+下一步打开 Visual Studio，选择“克隆仓库”, 输入 `https://github.com/mgba-emu/mgba.git`。在 Visual Studio 完成克隆后，转到“文件”>“CMake”，然后打开已签出（checked out）仓库的 CMakeLists.txt 文件。在此基础上便可像其他 Visual Studio CMake 项目一样在 Visual Studio 中开发 mGBA。
 
-#### Toolchain building
+#### 工具链构建
 
-If you have devkitARM (for 3DS), devkitPPC (for Wii), devkitA64 (for Switch), or vitasdk (for PS Vita), you can use the following commands for building:
+如果您拥有 devkitARM（3DS）、devkitPPC（Wii）、devkitA64（Switch）或 vitasdk（PS Vita），您可以使用以下命令进行构建：
 
 	mkdir build
 	cd build
 	cmake -DCMAKE_TOOLCHAIN_FILE=../src/platform/3ds/CMakeToolchain.txt ..
 	make
 
-Replace the `-DCMAKE_TOOLCHAIN_FILE` parameter for the following platforms:
+将 `-DCMAKE_TOOLCHAIN_FILE` 参数替换为以下不同平台的参数：
 
-- 3DS: `../src/platform/3ds/CMakeToolchain.txt`
-- Switch: `../src/platform/switch/CMakeToolchain.txt`
-- Vita: `../src/platform/psp2/CMakeToolchain.vitasdk`
-- Wii: `../src/platform/wii/CMakeToolchain.txt`
+- 3DS：`../src/platform/3ds/CMakeToolchain.txt`
+- Switch：`../src/platform/switch/CMakeToolchain.txt`
+- Vita：`../src/platform/psp2/CMakeToolchain.vitasdk`
+- Wii：`../src/platform/wii/CMakeToolchain.txt`
 
-### Dependencies
+### 依赖项
 
-mGBA has no hard dependencies, however, the following optional dependencies are required for specific features. The features will be disabled if the dependencies can't be found.
+mGBA 没有硬性的依赖项，但是特定功能需要以下可选的依赖项。如果找不到依赖项，则这些可选功能将会被禁用。
 
-- Qt 5: for the GUI frontend. Qt Multimedia or SDL are required for audio.
-- SDL: for a more basic frontend and gamepad support in the Qt frontend. SDL 2 is recommended, but 1.2 is supported.
-- zlib and libpng: for screenshot support and savestate-in-PNG support.
-- libedit: for command-line debugger support.
-- ffmpeg or libav: for video, GIF, WebP, and APNG recording.
-- libzip or zlib: for loading ROMs stored in zip files.
-- SQLite3: for game databases.
-- libelf: for ELF loading.
+- Qt 5：GUI 前端的所需依赖项。音频需要 Qt Multimedia 或 SDL。
+- SDL：更基本的前端以及在 Qt 前端中支持游戏手柄的所需依赖项。推荐使用 SDL 2、但也支持 1.2。
+- zlib 和 libpng：截图与 PNG 即时存档支持的所需依赖项
+- libedit：命令行调试器的所需依赖项
+- ffmpeg 或 libav：录制视频、GIF、WebP 和 APNG 的所需依赖项
+- libzip 或 zlib：载入储存在 ZIP 文件中的 ROM 的所需依赖项。
+- SQLite3：游戏数据库的所需依赖项
+- libelf：ELF 载入的所需依赖项
 
-SQLite3, libpng, and zlib are included with the emulator, so they do not need to be externally compiled first.
+SQLite3、libpng 以及 zlib 已包含在模拟器中，因此不需要先对这些依赖项进行外部编译。
 
 Footnotes
 ---------
 
-<a name="missing">[1]</a> Currently missing features are
+<a name="missing">[1]</a> 目前缺失的功能有
 
-- OBJ window for modes 3, 4 and 5 ([Bug #5](http://mgba.io/b/5))
+- 模式 3、4 和 5 的 OBJ 窗口 ([Bug #5](http://mgba.io/b/5))
 
-<a name="flashdetect">[2]</a> Flash memory size detection does not work in some cases. These can be configured at runtime, but filing a bug is recommended if such a case is encountered.
+<a name="flashdetect">[2]</a> 闪存大小检测在某些情况下不起作用。 这些可以在运行时中进行配置，但如果遇到此类情况，建议提交错误。
 
-<a name="osxver">[3]</a> 10.8 is only needed for the Qt port. It may be possible to build or running the Qt port on 10.7 or older, but this is not officially supported. The SDL port is known to work on 10.5, and may work on older.
+<a name="osxver">[3]</a> 仅 Qt 端口需要 10.8。应该可以在 10.7 或更早版本上构建或运行 Qt 端口，但这类操作不受官方支持。已知 SDL 端口可以在 10.5 上运行，并且可能能够在旧版本上运行。
 
 [downloads]: http://mgba.io/downloads.html
 [source]: https://github.com/mgba-emu/mgba/
 
-Copyright
+版权
 ---------
 
-mGBA is Copyright © 2013 – 2022 Jeffrey Pfau. It is distributed under the [Mozilla Public License version 2.0](https://www.mozilla.org/MPL/2.0/). A copy of the license is available in the distributed LICENSE file.
+mGBA 版权 © 2013 – 2020 Jeffrey Pfau。基于 [Mozilla 公共许可证版本 2.0](https://www.mozilla.org/MPL/2.0/) 许可证分发。分发的 LICENSE 文件中提供了许可证的副本。
 
-mGBA contains the following third-party libraries:
+mGBA 包含以下第三方库：
 
-- [inih](https://github.com/benhoyt/inih), which is copyright © 2009 – 2020 Ben Hoyt and used under a BSD 3-clause license.
-- [blip-buf](https://code.google.com/archive/p/blip-buf), which is copyright © 2003 – 2009 Shay Green and used under a Lesser GNU Public License.
-- [LZMA SDK](http://www.7-zip.org/sdk.html), which is public domain.
-- [MurmurHash3](https://github.com/aappleby/smhasher) implementation by Austin Appleby, which is public domain.
-- [getopt for MSVC](https://github.com/skandhurkat/Getopt-for-Visual-Studio/), which is public domain.
-- [SQLite3](https://www.sqlite.org), which is public domain.
+- [inih](https://github.com/benhoyt/inih)：版权 © 2009 – 2020 Ben Hoyt，基于 BSD 3-clause 许可证使用。
+- [blip-buf](https://code.google.com/archive/p/blip-buf)：版权 © 2003 – 2009 Shay Green，基于 Lesser GNU 公共许可证使用。
+- [LZMA SDK](http://www.7-zip.org/sdk.html)：属公有领域使用。
+- [MurmurHash3](https://github.com/aappleby/smhasher)：由 Austin Appleby 实施，属公有领域使用。
+- [getopt for MSVC](https://github.com/skandhurkat/Getopt-for-Visual-Studio/)：属公有领域使用。
+- [SQLite3](https://www.sqlite.org)：属公有领域使用。
 
-If you are a game publisher and wish to license mGBA for commercial usage, please email [licensing@mgba.io](mailto:licensing@mgba.io) for more information.
+如果您是游戏发行商，并希望获得 mGBA 用于商业用途的许可，请发送电子邮件到 [licensing@mgba.io](mailto:licensing@mgba.io) 获取更多信息。

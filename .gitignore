@@ -17,3 +17,9 @@ CMakeCache.txt
 CMakeFiles
 CMakeSettings.json
 version.c
+
+/Output/*
+.vscode
+
+.DS_Store
+*/.DS_Store
