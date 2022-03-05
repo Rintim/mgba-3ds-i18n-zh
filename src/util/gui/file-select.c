@@ -159,7 +159,7 @@ static bool _refreshDirectory(struct GUIParams* params, const char* currentPath,
 
 bool GUISelectFile(struct GUIParams* params, char* outPath, size_t outLen, bool (*filterName)(const char* name), bool (*filterContents)(struct VFile*), const char* preselect) {
 	struct GUIMenu menu = {
-		.title = "Select file",
+		.title = /* "Select file" */ "选择文件",
 		.subtitle = params->currentPath,
 	};
 	GUIMenuItemListInit(&menu.items, 0);

@@ -10,17 +10,17 @@
 
 void mGUIRemapKeys(struct GUIParams* params, struct mInputMap* map, const struct GUIInputKeys* keys) {
 	struct GUIMenu menu = {
-		.title = "Remap keys",
+		.title = /* "Remap keys" */ "初始化按键绑定",
 		.index = 0,
 		.background = 0
 	};
 	GUIMenuItemListInit(&menu.items, 0);
 	const char* keyNames[keys->nKeys + 1];
 	memcpy(&keyNames[1], keys->keyNames, keys->nKeys * sizeof(keyNames[0]));
-	keyNames[0] = "Unmapped";
+	keyNames[0] = /* "Unmapped" */ "未绑定";
 	size_t i;
 	*GUIMenuItemListAppend(&menu.items) = (struct GUIMenuItem) {
-		.title = "Game keys:",
+		.title = /* "Game keys:" */ "游戏中键位:",
 		.readonly = true,
 	};
 	for (i = 0; i < map->info->nKeys; ++i) {
@@ -34,7 +34,7 @@ void mGUIRemapKeys(struct GUIParams* params, struct mInputMap* map, const struct
 		};
 	}
 	*GUIMenuItemListAppend(&menu.items) = (struct GUIMenuItem) {
-		.title = "Interface keys:",
+		.title = /* "Interface keys:" */ "模拟器界面键位:",
 		.readonly = true,
 	};
 	for (i = 0; i < params->keyMap.info->nKeys; ++i) {
@@ -51,11 +51,11 @@ void mGUIRemapKeys(struct GUIParams* params, struct mInputMap* map, const struct
 		};
 	}
 	*GUIMenuItemListAppend(&menu.items) = (struct GUIMenuItem) {
-		.title = "Save",
+		.title = /* "Save" */ "保存",
 		.data = GUI_V_I(-2),
 	};
 	*GUIMenuItemListAppend(&menu.items) = (struct GUIMenuItem) {
-		.title = "Cancel",
+		.title = /* "Cancel" */ "取消",
 		.data = GUI_V_I(-1),
 	};
 

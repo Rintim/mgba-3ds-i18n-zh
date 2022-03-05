@@ -21,6 +21,9 @@ struct GUIFont {
 	float size;
 };
 
+// static CFNT_s* FontLoad(const char* filename);
+static Result FontLoad(CFNT_s** font, const char* filename);
+
 struct GUIFont* GUIFontCreate(void) {
 	fontEnsureMapped();
 	struct GUIFont* guiFont = malloc(sizeof(struct GUIFont));
@@ -29,8 +32,46 @@ struct GUIFont* GUIFontCreate(void) {
 	}
 	C3D_Tex* tex;
 
-	guiFont->font = fontGetSystemFont();
-	TGLP_s* glyphInfo = fontGetGlyphInfo(guiFont->font);
+	const char* list[12] = {
+		"romfs:/hkj_full.bcfnt",
+		"sdmc:/fonts/hkj_full.bcfnt",
+		"sdmc:/font/hkj_full.bcfnt",
+		"romfs:/hkj_std.bcfnt",
+		"sdmc:/fonts/hkj_std.bcfnt",
+		"sdmc:/font/hkj_std.bcfnt",
+		"romfs:/cbf_full.bcfnt",
+		"sdmc:/fonts/cbf_full.bcfnt",
+		"sdmc:/font/cbf_full.bcfnt",
+		"romfs:/cbf_std.bcfnt",
+		"sdmc:/fonts/cbf_std.bcfnt",
+		"sdmc:/font/cbf_std.bcfnt",
+	};
+
+	//guiFont->font = fontGetSystemFont();
+	guiFont->font = NULL;
+
+	for (unsigned int i = 0; i < 12; ++i) 
+	{
+		if (R_SUCCEEDED(FontLoad(&guiFont->font, list[i]))) 
+		{
+			break;
+		}
+	}
+
+	TGLP_s* glyphInfo;
+
+	if (guiFont->font) 
+	{
+		fontFixPointers(guiFont->font);
+		glyphInfo = guiFont->font->finf.tglp;
+	}
+	else 
+	{
+		guiFont->font = fontGetSystemFont();
+		glyphInfo = fontGetGlyphInfo(guiFont->font);
+	}
+
+	//TGLP_s* glyphInfo = fontGetGlyphInfo(guiFont->font);
 	guiFont->size = FONT_SIZE / glyphInfo->cellHeight;
 	guiFont->sheets = calloc(glyphInfo->nSheets, sizeof(*guiFont->sheets));
 
@@ -171,4 +212,29 @@ void GUIFontDrawIconSize(struct GUIFont* font, int x, int y, int w, int h, uint3
 	             h ? -h : -metric.height,
 	             metric.x, font->icons.height - metric.y - metric.height,
 	             metric.width, metric.height, 0);
+}
+
+/*
+static CFNT_s* FontLoad(const char* filename)
+{
+	CFNT_s* result = NULL;
+	FontLoad(&result, filename);
+	return result;
+}
+*/
+
+static Result FontLoad(CFNT_s** font, const char* filename)
+{
+    FILE* f = fopen(filename, "rb");
+    if (!f) return 1;
+    CFNT_s ret;
+    fread(&ret, 1, sizeof(CFNT_s), f);
+    *font =linearAlloc(ret.fileSize);
+    if (*font)
+	{
+		memcpy(*font, &ret, sizeof(CFNT_s));
+		fread((u8*)(*font) + sizeof(CFNT_s), 1, ret.fileSize - sizeof(CFNT_s), f);
+	}
+    fclose(f);
+	return 0;
 }

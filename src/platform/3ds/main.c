@@ -921,10 +921,10 @@ int main() {
 					"B",
 					"Select",
 					"Start",
-					"D-Pad Right",
-					"D-Pad Left",
-					"D-Pad Up",
-					"D-Pad Down",
+					/* "D-Pad Right" */ "十字键 右",
+					/* "D-Pad Left" */ "十字键 左",
+					/* "D-Pad Up" */ "十字键 上",
+					/* "D-Pad Down" */ "十字键 下",
 					"R",
 					"L",
 					"X",
@@ -941,10 +941,10 @@ int main() {
 					0,
 					0,
 					0,
-					"C-Stick Right",
-					"C-Stick Left",
-					"C-Stick Up",
-					"C-Stick Down",
+					/* "C-Stick Right" */ "C摇杆 右",
+					/* "C-Stick Left" */ "C摇杆 左",
+					/* "C-Stick Up" */ "C摇杆 上",
+					/* "C-Stick Down" */ "C摇杆 下",
 				},
 				.nKeys = 28
 			},
@@ -952,7 +952,7 @@ int main() {
 		},
 		.configExtra = (struct GUIMenuItem[]) {
 			{
-				.title = "Screen mode",
+				.title = /* "Screen mode" */ "屏幕模式",
 				.data = GUI_V_S("screenMode"),
 				.submenu = 0,
 				.state = SM_PA_TOP,
@@ -967,39 +967,39 @@ int main() {
 				.nStates = 6
 			},
 			{
-				.title = "Filtering",
+				.title = /* "Filtering" */ "过滤",
 				.data = GUI_V_S("filterMode"),
 				.submenu = 0,
 				.state = FM_LINEAR_2x,
 				.validStates = (const char*[]) {
 					NULL, // Disable choosing nearest neighbor; it always looks bad
-					"Bilinear (smoother)",
-					"Bilinear (pixelated)",
+					/* "Bilinear (smoother)" */ "Bilinear (柔和)",
+					/* "Bilinear (pixelated)" */ "Bilinear (像素)", 
 				},
 				.nStates = 3
 			},
 			{
-				.title = "Screen darkening",
+				.title = /* "Screen darkening" */ "屏幕暗化",
 				.data = GUI_V_S("darkenMode"),
 				.submenu = 0,
 				.state = DM_NATIVE,
 				.validStates = (const char*[]) {
-					"None",
-					"Dark",
-					"Very dark",
-					"Grayed",
+					/* "None" */ "无",
+					/* "Dark" */ "暗",
+					/* "Very dark" */ "非常暗",
+					/* "Grayed" */ "灰",
 				},
 				.nStates = 4
 			},
 			{
-				.title = "Camera",
+				/* .title = "Camera" */ "摄像头",
 				.data = GUI_V_S("camera"),
 				.submenu = 0,
 				.state = 1,
 				.validStates = (const char*[]) {
-					"None",
-					"Inner",
-					"Outer",
+					/* "None" */ "无",
+					/* "Inner" */ "里摄像头",
+					/* "Outer" */ "外摄像头",
 				},
 				.nStates = 3
 			}
