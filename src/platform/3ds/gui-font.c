@@ -32,25 +32,29 @@ struct GUIFont* GUIFontCreate(void) {
 	}
 	C3D_Tex* tex;
 
-	const char* list[12] = {
+	const char* list[16] = {
 		"romfs:/hkj_full.bcfnt",
 		"sdmc:/fonts/hkj_full.bcfnt",
 		"sdmc:/font/hkj_full.bcfnt",
+		"sdmc:/Include/Fonts/hkj_full.bcfnt",
 		"romfs:/hkj_std.bcfnt",
 		"sdmc:/fonts/hkj_std.bcfnt",
 		"sdmc:/font/hkj_std.bcfnt",
+		"sdmc:/Include/Fonts/hkj_std.bcfnt",
 		"romfs:/cbf_full.bcfnt",
 		"sdmc:/fonts/cbf_full.bcfnt",
 		"sdmc:/font/cbf_full.bcfnt",
+		"sdmc:/Include/Fonts/cbf_full.bcfnt",
 		"romfs:/cbf_std.bcfnt",
 		"sdmc:/fonts/cbf_std.bcfnt",
 		"sdmc:/font/cbf_std.bcfnt",
+		"sdmc:/Include/Fonts/cbf_std.bcfnt",
 	};
 
 	//guiFont->font = fontGetSystemFont();
 	guiFont->font = NULL;
 
-	for (unsigned int i = 0; i < 12; ++i) 
+	for (unsigned int i = 0; i < 16; ++i) 
 	{
 		if (R_SUCCEEDED(FontLoad(&guiFont->font, list[i]))) 
 		{
