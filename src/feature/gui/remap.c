@@ -10,7 +10,7 @@
 
 void mGUIRemapKeys(struct GUIParams* params, struct mInputMap* map, const struct GUIInputKeys* keys) {
 	struct GUIMenu menu = {
-		.title = /* "Remap keys" */ "初始化按键绑定",
+		.title = /* "Remap keys" */ "按键配置",
 		.index = 0,
 		.background = 0
 	};
